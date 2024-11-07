@@ -3,6 +3,14 @@ let patterns = [];
 let beads = [];
 const padding = 20;
 
+let song;
+let fft;
+let button;
+
+function preload() {
+  song = loadSound("assets/ultra violet.mp3");}
+
+
 /**
  * Created a class called CircularPattern that will create circular patterned designs
  * Inspired by p5.js circular patterned design examples:
@@ -17,11 +25,17 @@ class CircularPattern {
    * Color palette object that will contain various colors used in the circular patterned design
    * @param {Object} colors 
    */
+
+  adjustSize(scaleFactor) {
+    this.radius = this.baseRadius * scaleFactor;
+  }
+
   constructor(x, y, colors) {
     this.x = x;
     this.y = y;
     this.radius = 70; 
     this.colors = colors;
+    this.baseRadius = this.radius;
     this.dotSize = 5;
     this.ringSpacing = 7;
   }
