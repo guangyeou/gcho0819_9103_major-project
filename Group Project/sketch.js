@@ -348,6 +348,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
     fft = new p5.FFT(0.8, 128); // Initialize FFT
 
+    button = createButton("Play/Pause");
+    button.position((width - button.width) / 2, height - 50);
+    button.mousePressed(togglePlayPause);
+
   // An array of color pallete objects
   const arrayOfColors = [
     {
@@ -471,6 +475,13 @@ function setup() {
   }
 }
 
+function togglePlayPause() {
+  if (song.isPlaying()) {
+    song.pause();
+  } else {
+    song.loop();
+  }
+}
 /**
  * p5.js draw function is used to render the complete generative artwork
  * Uses layering technique along with the background, patterns, connections, and beads to create a visual depth
@@ -508,5 +519,6 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   patterns = [];
   beads = [];
+  button.position((width - button.width) / 2, height - 50);
   setup();
 }
