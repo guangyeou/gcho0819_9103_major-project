@@ -346,7 +346,7 @@ function drawCurvyConnections() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-    fft = new p5.FFT(0.8, 128); // Initialize FFT
+    fft = new p5.FFT(0.1, 4096); // Initialize FFT
 
     button = createButton("Play/Pause");
     button.position((width - button.width) / 2, height - 50);
