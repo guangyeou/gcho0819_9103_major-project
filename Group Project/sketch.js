@@ -346,7 +346,8 @@ function drawCurvyConnections() {
  */
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+    fft = new p5.FFT(0.8, 128); // Initialize FFT
+
   // An array of color pallete objects
   const arrayOfColors = [
     {
@@ -480,18 +481,19 @@ function draw() {
  
   background('#086487');
   
-  // Draws various circular patterned designs
-  patterns.forEach(pattern => {
-    pattern.display();
-  });
-  
-  // Draws curvy connections that connect the beads
+  if (song.isPlaying()) {
+    let spectrum = fft.analyze();
+    patterns.forEach((pattern, index) => {
+      let scaleFactor = map(spectrum[index % spectrum.length], 0, 255, 0.5, 1.5); // Map FFT values to scaling range
+      pattern.adjustSize(scaleFactor);
+    });
+  } else {
+    patterns.forEach((pattern) => pattern.adjustSize(1)); // Reset size
+  }
+
+  patterns.forEach((pattern) => pattern.display());
   drawCurvyConnections();
-  
-  // Draws various beads
-  beads.forEach(bead => {
-    bead.display();
-  });
+  beads.forEach((bead) => bead.display());
 }
 
 /**
