@@ -3,7 +3,7 @@
 ## Instructions
 
 1. **Interaction**:
-   - *Move the mouse to the bottom, click the “play/pause” button to start or stop the audio, and wait for the music to start. The animation will then dynamically respond to the music. 
+   - Move the mouse to the bottom, click the “play/pause” button to start or stop the audio, and wait for the music to start. The animation will then dynamically respond to the music. 
 
 2. **Experience the Animation**:
    - The interactive part uses audio to adjust the size of the circular patterns according to the audio frequencies. 
